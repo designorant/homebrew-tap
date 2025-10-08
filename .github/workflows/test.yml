@@ -1,0 +1,36 @@
+name: Test
+run-name: Test • ${{ github.event.head_commit.message || github.ref_name }}
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        run: |
+          echo "/opt/homebrew/bin:/usr/local/bin" >> $GITHUB_PATH
+
+      - name: Install formula
+        run: |
+          brew tap designorant/tap $GITHUB_WORKSPACE
+          brew install ccblocks
+
+      - name: Test formula
+        run: |
+          brew test ccblocks
+
+      - name: Audit formula
+        run: |
+          brew audit --strict --online ccblocks
