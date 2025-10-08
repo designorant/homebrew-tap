@@ -15,6 +15,11 @@ class Ccblocks < Formula
     # Install supporting scripts and libraries to libexec
     libexec.install "bin", "lib", "VERSION"
 
+    # Install daemon script from libexec subdirectory
+    cd "libexec" do
+      libexec.install "ccblocks-daemon.sh"
+    end
+
     # Rewrite the SCRIPT_DIR in ccblocks to point to libexec
     inreplace bin/"ccblocks" do |s|
       s.gsub! 'SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"',
