@@ -11,7 +11,7 @@ class Ccblocks < Formula
   def install
     # Stage runtime scripts inside libexec so relative lookups stay intact
     libexec.install "ccblocks", "VERSION"
-    libexec.install Dir["bin"]
+    libexec.install "bin"
     libexec.install Dir["libexec/*"]
     libexec.install "lib"
 
