@@ -9,22 +9,17 @@ class Ccblocks < Formula
   depends_on macos: :catalina
 
   def install
-    # Install main executable
-    bin.install "ccblocks"
+    # Stage runtime scripts inside libexec so relative lookups stay intact
+    libexec.install "ccblocks", "VERSION"
+    libexec.install Dir["bin"]
+    libexec.install Dir["libexec/*"]
+    libexec.install "lib"
 
-    # Install supporting scripts and libraries to libexec
-    libexec.install "bin", "lib", "VERSION"
+    # Install documentation at prefix (mirrors GitHub repo layout)
+    prefix.install "LICENSE", "README.md", "CONTRIBUTING.md"
 
-    # Install daemon script from libexec subdirectory
-    cd "libexec" do
-      libexec.install "ccblocks-daemon.sh"
-    end
-
-    # Rewrite the SCRIPT_DIR in ccblocks to point to libexec
-    inreplace bin/"ccblocks" do |s|
-      s.gsub! 'SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"',
-              "SCRIPT_DIR=\"#{libexec}\""
-    end
+    # Create exec wrapper in bin (Homebrew best practice)
+    bin.write_exec_script libexec/"ccblocks"
   end
 
   def caveats
