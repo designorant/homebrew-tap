@@ -11,6 +11,7 @@ class Ccblocks < Formula
   def install
     # Stage runtime payload in libexec (matches repository layout)
     libexec.install Dir["libexec/*"]
+    libexec.install "VERSION"
 
     # Install documentation at prefix (mirrors GitHub repo layout)
     prefix.install "LICENSE", "README.md", "CONTRIBUTING.md"
