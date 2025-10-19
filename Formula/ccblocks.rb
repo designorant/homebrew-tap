@@ -9,11 +9,8 @@ class Ccblocks < Formula
   depends_on macos: :catalina
 
   def install
-    # Stage runtime scripts inside libexec so relative lookups stay intact
-    libexec.install "ccblocks", "VERSION"
-    libexec.install "bin"
+    # Stage runtime payload in libexec (matches repository layout)
     libexec.install Dir["libexec/*"]
-    libexec.install "lib"
 
     # Install documentation at prefix (mirrors GitHub repo layout)
     prefix.install "LICENSE", "README.md", "CONTRIBUTING.md"
