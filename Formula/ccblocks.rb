@@ -12,8 +12,11 @@ class Ccblocks < Formula
     # Install main executable
     bin.install "ccblocks"
 
-    # Install supporting scripts and libraries to libexec
-    libexec.install "bin", "lib", "VERSION"
+    # Install lib at prefix root (daemon uses ../lib from libexec)
+    prefix.install "lib"
+
+    # Install supporting scripts to libexec
+    libexec.install "bin", "VERSION"
 
     # Install daemon script from libexec subdirectory
     cd "libexec" do
