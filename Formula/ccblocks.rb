@@ -1,8 +1,8 @@
 class Ccblocks < Formula
   desc "Time-shift Claude sessions to match your working hours"
   homepage "https://github.com/designorant/ccblocks"
-  url "https://github.com/designorant/ccblocks/archive/refs/tags/v1.1.1.tar.gz"
-  sha256 "f162a27f65a26d23ca2a2570358f131b8c8ce6bdc74de4bdf52b357f5c3f629a"
+  url "https://github.com/designorant/ccblocks/archive/refs/tags/v1.1.2.tar.gz"
+  sha256 "ce7f5fa72ddce8d2c934745e5f0decd9c52dd793db38883e0d28ae2dda18c896"
   license "Apache-2.0"
 
   depends_on "bash"
