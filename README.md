@@ -15,6 +15,7 @@ brew tap designorant/tap
 | Name | Description | Installation |
 |------|-------------|--------------|
 | [ccblocks](https://github.com/designorant/ccblocks) | time-shift Claude sessions to match your working hours | `brew install designorant/tap/ccblocks` |
+| [dockroute](https://github.com/designorant/dockroute) | Local development proxy for Docker — no more port conflicts | `brew install designorant/tap/dockroute` |
 
 ## Contributing
 
