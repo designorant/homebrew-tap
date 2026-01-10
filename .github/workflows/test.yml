@@ -22,15 +22,14 @@ jobs:
         run: |
           echo "/opt/homebrew/bin:/usr/local/bin" >> $GITHUB_PATH
 
-      - name: Install formula
+      - name: Install, test, and audit all formulae
         run: |
           brew tap designorant/tap $GITHUB_WORKSPACE
-          brew install ccblocks
-
-      - name: Test formula
-        run: |
-          brew test ccblocks
-
-      - name: Audit formula
-        run: |
-          brew audit --strict --online ccblocks
+          for formula in Formula/*.rb; do
+            name=$(basename "$formula" .rb)
+            echo "::group::$name"
+            brew install "$name"
+            brew test "$name"
+            brew audit --strict --online "$name"
+            echo "::endgroup::"
+          done
