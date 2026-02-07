@@ -9,7 +9,7 @@ class Dockroute < Formula
 
   def install
     bin.install "bin/dockroute"
-    (share/"dockroute").install "share/docker-compose.yml"
+    pkgshare.install "share/docker-compose.yml"
   end
 
   def caveats
