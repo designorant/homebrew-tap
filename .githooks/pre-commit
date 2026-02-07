@@ -1,0 +1,33 @@
+#!/bin/bash
+set -e
+
+# Lint staged Homebrew formula files before committing.
+# Catches common issues that `brew audit --strict` flags in CI.
+
+STAGED_FORMULAS=$(git diff --cached --name-only --diff-filter=ACM | grep '^Formula/.*\.rb$' || true)
+
+if [[ -z "$STAGED_FORMULAS" ]]; then
+	exit 0
+fi
+
+ERRORS=0
+
+for file in $STAGED_FORMULAS; do
+	# Final newline — pipe directly to avoid shell $() stripping trailing newlines
+	if [[ -n "$(git show ":$file" | tail -c 1)" ]]; then
+		echo "error: $file: final newline missing"
+		ERRORS=$((ERRORS + 1))
+	fi
+
+	# share/"name" → pkgshare
+	if git show ":$file" | grep -qE '\(share/"[^"]*"\)'; then
+		echo "error: $file: use \`pkgshare\` instead of \`share/\"name\"\`"
+		ERRORS=$((ERRORS + 1))
+	fi
+done
+
+if [[ $ERRORS -gt 0 ]]; then
+	echo ""
+	echo "$ERRORS problem(s) found. Fix before committing."
+	exit 1
+fi
