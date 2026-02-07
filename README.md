@@ -23,4 +23,4 @@ Found an issue or want to request a formula? Open an issue in the relevant proje
 
 ## License
 
-[Apache-2.0](LICENSE) © [@designorant](https://github.com/designorant)
+[MIT](LICENSE) © [@designorant](https://github.com/designorant)

@@ -3,7 +3,7 @@ class Ccblocks < Formula
   homepage "https://github.com/designorant/ccblocks"
   url "https://github.com/designorant/ccblocks/archive/refs/tags/v1.1.3.tar.gz"
   sha256 "e67926d9fa9ba12987cf47eddf548f4ad70bc9ef60ad51f2299a8f8a29e17b80"
-  license "Apache-2.0"
+  license "MIT"
 
   depends_on "bash"
   depends_on macos: :catalina
