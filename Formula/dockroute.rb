@@ -1,8 +1,8 @@
 class Dockroute < Formula
   desc "Local development proxy for Docker — no more port conflicts"
   homepage "https://github.com/designorant/dockroute"
-  url "https://github.com/designorant/dockroute/archive/refs/tags/v2.0.0.tar.gz"
-  sha256 "0bc95b9210249e32792d7c3f3ab3106191dfcd3d347ecd47a2fd46b8dd33dda1"
+  url "https://github.com/designorant/dockroute/archive/refs/tags/v2.1.0.tar.gz"
+  sha256 "8820c2f4710633685fb2cc3a02be11b5147aa4d7740a741843ae8b9e261d19fa"
   license "MIT"
 
   depends_on "bash"
