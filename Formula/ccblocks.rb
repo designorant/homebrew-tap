@@ -1,12 +1,11 @@
 class Ccblocks < Formula
   desc "Time-shift Claude sessions to match your working hours"
   homepage "https://github.com/designorant/ccblocks"
-  url "https://github.com/designorant/ccblocks/archive/refs/tags/v1.1.3.tar.gz"
-  sha256 "e67926d9fa9ba12987cf47eddf548f4ad70bc9ef60ad51f2299a8f8a29e17b80"
+  url "https://github.com/designorant/ccblocks/archive/refs/tags/v1.1.5.tar.gz"
+  sha256 "759747b6dd830d844dc68e81f4d9039eb5eb2f80684e4881a86b2275fe336225"
   license "MIT"
 
   depends_on "bash"
-  depends_on macos: :catalina
 
   def install
     # Stage runtime payload in libexec (matches repository layout)
